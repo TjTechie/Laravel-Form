@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
-use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\ArticleController;
 
 
 /*
@@ -16,44 +16,14 @@ use App\Http\Controllers\ArticlesController;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-//
-//Route::get('/fresh', function () {
-//    $strModuleName = request('module');
-//    if( is_string( $strModuleName ) && strlen( $strModuleName ) > 0 ) {
-//        if( 'test1' == $strModuleName ) {
-//            return view('fresh', [ 'moduleName'=>$strModuleName ]);
-//        } else {
-//            return view('welcome');
-//        }
-//
-//    }
-//
-//});
-
-// todo: below code is now added in PostsController::execute
-//Route::get('/posts/{post}', function ($post) {
-//    $posts = [
-//        'my_first_post' => 'This is my first post',
-//        'my_second_post' => 'This_is_my_second_post'
-//    ];
-//    if( isset( $posts[$post] ) ) {
-//        return view( 'fresh', [ 'my_post' => $posts[$post] ] );
-//    } else {
-//        abort( 404, "Sorry, the page not found with post you've sent" );
-//    }
-//
-//});
-
 Route::get('/', function(){
     return view('welcome');
 });
-Route::get( '/posts/{post}', [PostsController::class, 'execute'] );
-Route::post( 'articles', [ArticlesController::class, 'store'] );
-Route::get( 'articles/create', [ArticlesController::class, 'create'] );
-Route::get( 'articles', [ArticlesController::class, 'index'] );
-Route::get( 'articles/{article}', [ArticlesController::class, 'show'] );
-Route::get( 'articles/{article}/edit', [ArticlesController::class, 'edit'] );
-Route::put( 'articles/{article}', [ArticlesController::class, 'update'] );
+
+Route::post( 'articles', [ArticleController::class, 'store'] );
+Route::get( 'articles/create', [ArticleController::class, 'create'] )->name('article.create');
+Route::get( 'articles', [ArticleController::class, 'index'] );
+Route::get( 'articles/{article}', [ArticleController::class, 'show'] );
+Route::get( 'articles/{article}/edit', [ArticleController::class, 'edit'] )->name('article.edit');
+Route::put( 'articles/{article}', [ArticleController::class, 'update'] );
+Route::get( 'articles/{article}/delete', [ArticleController::class, 'destroy'] )->name('article.destory');

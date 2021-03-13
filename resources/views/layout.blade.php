@@ -23,7 +23,7 @@
 </head>
 <body class="antialiased">
 <div style="width: 100%;height: 100px; background-color: gray">This is the header</div>
-<div style="height:600px;width: 90%;text-align: center; align-content: center; margin-left: 5%">
+<div style="height:600px;width: 90%;text-align: center; align-content: center; margin-left: 5%; overflow-y: scroll">
 @yield('pageContents')
 </div>
 <div style="width: 100%;height: 100px; background-color: gray">This is the footer</div>
